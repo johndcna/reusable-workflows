@@ -16,8 +16,6 @@ on:
 
 jobs:
   deploy-app-service:
-    environment: ${{ inputs.target_environment }}
-    runs-on: "${{ inputs.target_runner }}"
     steps:
 
     - name: Download Artifact - ${{ inputs.artifact_name }}
