@@ -16,6 +16,7 @@ on:
 
 jobs:
   deploy-app-service:
+    runs-on: ubuntu-latest
     steps:
 
     - name: Download Artifact - ${{ inputs.artifact_name }}
