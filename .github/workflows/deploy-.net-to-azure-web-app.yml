@@ -36,4 +36,4 @@ jobs:
       with:
         # Name of the App Service
         app-name: ${{ inputs.APP_NAME }}
-        publish-profile: ${{ inputs.target_publish_profile }}
+        publish-profile: ${{ secrets.target_publish_profile }}
