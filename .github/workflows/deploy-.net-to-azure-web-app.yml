@@ -1,0 +1,43 @@
+name: Deploy Azure App Service
+on:
+  workflow_call:
+    inputs:
+      target_environment:
+        description: 'Set the target environment to fetch the corresponding Azure Service Principal details'
+        # no default value set to ensure target environment is supplied to get the Azure Service Principal details for the corresponding environment 
+        required: true
+        type: string    
+      artifact_name:
+        description: 'Set the artifact name'
+        required: true
+        type: string
+      target_app_service:
+        description: 'Set the target App Service'
+        required: true
+        type: string
+
+jobs:
+  deploy-app-service:
+    environment: ${{ inputs.target_environment }}
+    runs-on: "${{ inputs.target_runner }}"
+    steps:
+
+    - name: Download Artifact - ${{ inputs.artifact_name }}
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ inputs.artifact_name }}
+
+
+    - name: Azure Web App Deploy
+      uses: azure/webapps-deploy@v2
+      with:
+        # Name of the App Service
+        app-name: ${{ env.APP_NAME }}
+        # Name of the deployment slot
+        slot-name: ${{ inputs.target_slot }}
+
+        # TODO: BELOW INPUTS ARE LIMITED TO webapps-deploy@v3, uncomment until we switch to V3
+        # Set to true to delete the existing files in the App Service before deploying the package
+        #clean: $ {{ inputs.target_clean }}
+        # Set to true to restart the App Service after deploying the package
+        #restart: $ {{ inputs.target_restart }}
