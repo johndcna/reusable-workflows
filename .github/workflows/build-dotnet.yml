@@ -1,0 +1,59 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: Build .NET
+
+on:
+  workflow_call:
+    inputs:
+      dotnet_version:
+        description: 'Set the .NET Core version'
+        required: false
+        default: '8.x'
+        type: string
+      artifact_name:
+        description: 'Set the artifact name'
+        required: false
+        type: string
+      project_file:
+        description: 'Path to project file to build'
+        required: true
+        type: string
+      path:
+        description: 'Path to project file to artifact'
+        required: true
+        type: string
+
+jobs:
+
+  dotnet-build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+      # specifies the path in the repository to checkout from. the default is null, the repository root is used
+
+    
+
+    - name: .NET - restore dependencies
+      run: dotnet restore
+
+    - name: .NET - build
+      run: dotnet build  --no-restore --verbosity normal
+
+    - name: .NET Test
+      run: dotnet test --no-build --verbosity normal
+
+    - name: .NET Publish
+      run: dotnet publish -c Release -o './ding'
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ inputs.artifact_name }}
+        path: './ding'
+
+
+
+
+      

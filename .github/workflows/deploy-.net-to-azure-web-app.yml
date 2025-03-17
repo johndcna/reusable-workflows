@@ -1,0 +1,47 @@
+name: Deploy Azure App Service
+on:
+  workflow_call:
+    inputs: 
+      artifact_name:
+        description: 'Set the artifact name'
+        required: true
+        type: string
+      target_app_name:
+        description: 'Set the target App Name'
+        required: true
+        type: string 
+      target_publish_profile:
+        required: true
+        type: string 
+    secrets:
+      subscription_id:
+        required: true
+      azure_client_id:
+        required: true
+      azure_tenant_id:
+        required: true
+permissions:
+  id-token: write
+  contents: read
+  
+jobs:
+  deploy-app-service:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.azure_client_id }}
+          tenant-id: ${{ secrets.azure_tenant_id }}
+          subscription-id: ${{ secrets.subscription_id }}
+          
+      - name: Enable step debugging
+        run: |
+          echo "ACTIONS_STEP_DEBUG=true" >> $GITHUB_ENV
+          
+      - name: Azure Web App Deploy
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ vars.APP_NAME }}
+          publish-profile: ${{ inputs.target_publish_profile }}
+
