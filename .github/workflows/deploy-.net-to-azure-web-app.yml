@@ -11,10 +11,14 @@ on:
         description: 'Set the artifact name'
         required: true
         type: string
-      target_app_service:
-        description: 'Set the target App Service'
+      target_app_name:
+        description: 'Set the target App Name'
         required: true
         type: string
+      target_publish_profile:
+        description: 'Set the target Publish Profile'
+        required: true
+        type: string      
 
 jobs:
   deploy-app-service:
@@ -32,5 +36,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         # Name of the App Service
-        app-name: ${{ env.APP_NAME }}
-        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        app-name: ${{ inputs.APP_NAME }}
+        publish-profile: ${{ inputs.target_publish_profile }}
