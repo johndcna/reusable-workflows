@@ -1,12 +1,7 @@
 name: Deploy Azure App Service
 on:
   workflow_call:
-    inputs:
-      target_environment:
-        description: 'Set the target environment to fetch the corresponding Azure Service Principal details'
-        # no default value set to ensure target environment is supplied to get the Azure Service Principal details for the corresponding environment 
-        required: true
-        type: string    
+    inputs: 
       artifact_name:
         description: 'Set the artifact name'
         required: true
