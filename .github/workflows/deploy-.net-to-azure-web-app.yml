@@ -15,10 +15,9 @@ on:
         description: 'Set the target App Name'
         required: true
         type: string
+    secrets:
       target_publish_profile:
-        description: 'Set the target Publish Profile'
         required: true
-        type: string      
 
 jobs:
   deploy-app-service:
