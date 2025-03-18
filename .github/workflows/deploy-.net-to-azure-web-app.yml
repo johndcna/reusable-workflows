@@ -19,12 +19,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - name: Download Artifact - ${{ inputs.artifact_name }}
-      uses: actions/download-artifact@v4
-      with:
-        name: ${{ inputs.artifact_name }}
-
-
     - name: Azure Web App Deploy
       uses: azure/webapps-deploy@v2
       with:
