@@ -14,15 +14,12 @@ on:
         required: true
         type: string
       subscription_id:
-        description: 'Azure Subscription ID'
         required: true
         type: string
       azure_client_id:
-        description: 'Azure client ID'
         required: true
         type: string
       azure_tenant_id:
-        description: 'Azure tenant ID'
         required: true
         type: string
 permissions:
