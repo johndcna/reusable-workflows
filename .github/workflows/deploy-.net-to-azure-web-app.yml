@@ -22,10 +22,6 @@ on:
       azure_tenant_id:
         description: 'Azure tenant ID'
         required: true
-permissions:
-  # to Fetch an OpenID Connect (OIDC) token
-  id-token: write
-  contents: read
   
 jobs:
   deploy-app-service:
