@@ -33,7 +33,7 @@ jobs:
     - name: Print secret
       run: |
         echo "The secret is successfully subscription_id"
-        echo "The value of the secret is: ${{ secrets.target_publish_profile }}"
+        echo "The value of the secret is: ${{ secrets.subscription-id }}"
     - name: Print secret
       run: |
         echo "The secret is successfully azure_client_id"
@@ -46,9 +46,9 @@ jobs:
     - name: Azure Login
       uses: azure/login@v2
       with:
-        subscription-id: '6c8cd46b-6887-4cba-8596-a38ceeabd610'
-        client-id: '921afbfe-b2c3-4d0b-b2eb-ec131101e2d1'
-        tenant-id: 'f4acf4b0-d8ce-47de-9567-63bdeee62d4e'
+        subscription-id: ${{ secrets.subscription-id }}
+        client-id: ${{ secrets.azure_client_id }}
+        tenant-id: ${{ secrets.azure_tenant_id }}
         
     - name: Azure CLI script
       uses: azure/cli@v2
