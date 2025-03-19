@@ -22,6 +22,8 @@ on:
       azure_tenant_id:
         description: 'Azure tenant ID'
         required: true
+permissions:
+  id-token: write
   
 jobs:
   deploy-app-service:
