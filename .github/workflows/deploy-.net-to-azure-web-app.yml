@@ -41,7 +41,7 @@ jobs:
         echo "The value of the secret is: ${{ secrets.azure_tenant_id }}"
     
     - name: Azure Login
-      uses: azure/login@v2
+      uses: azure/login@v1
       with:
         subscription-id: '6c8cd46b-6887-4cba-8596-a38ceeabd610'
         client-id: '921afbfe-b2c3-4d0b-b2eb-ec131101e2d1'
