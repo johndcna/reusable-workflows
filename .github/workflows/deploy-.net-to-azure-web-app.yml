@@ -27,6 +27,19 @@ jobs:
   deploy-app-service:
     runs-on: ubuntu-latest
     steps:
+    - name: Print secret
+      run: |
+        echo "The secret is successfully subscription_id"
+        echo "The value of the secret is: ${{ secrets.subscription_id }}"
+    - name: Print secret
+      run: |
+        echo "The secret is successfully azure_client_id"
+        echo "The value of the secret is: ${{ secrets.azure_client_id }}"
+    - name: Print secret
+      run: |
+        echo "The secret is successfully azure_tenant_id"
+        echo "The value of the secret is: ${{ secrets.azure_tenant_id }}"
+    
     - name: Azure Login
       uses: azure/login@v2
       with:
