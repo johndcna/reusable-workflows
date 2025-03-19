@@ -9,19 +9,16 @@ on:
       target_app_name:
         description: 'Set the target App Name'
         required: true
-        type: string        
+        type: string 
+    secrets:
       target_publish_profile:
         required: true
-        type: string
       subscription_id:
         required: true
-        type: string
       azure_client_id:
         required: true
-        type: string
       azure_tenant_id:
         required: true
-        type: string
 permissions:
   id-token: write
   contents: read
