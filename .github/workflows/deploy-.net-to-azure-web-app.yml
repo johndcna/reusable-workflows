@@ -34,6 +34,7 @@ jobs:
         subscription-id: ${{ secrets.subscription_id }}
         client-id: ${{ secrets.azure_client_id }}
         tenant-id: ${{ secrets.azure_tenant_id }}
+        enable-AzPSSession: true
         
     - name: Azure Web App Deploy
       uses: azure/webapps-deploy@v2
