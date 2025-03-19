@@ -25,7 +25,6 @@ permissions:
   
 jobs:
   deploy-app-service:
-    environment: master
     runs-on: ubuntu-latest
     steps:
       - name: Echo secret
