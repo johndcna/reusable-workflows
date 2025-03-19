@@ -9,8 +9,7 @@ on:
       target_app_name:
         description: 'Set the target App Name'
         required: true
-        type: string
-        
+        type: string        
       target_publish_profile:
         required: true
         type: string
