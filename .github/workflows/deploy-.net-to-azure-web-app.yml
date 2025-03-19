@@ -25,6 +25,7 @@ permissions:
   
 jobs:
   deploy-app-service:
+    environment: 'development'
     runs-on: ubuntu-latest
     steps:
       - name: Azure login
