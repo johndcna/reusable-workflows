@@ -10,12 +10,17 @@ on:
         description: 'Set the target App Name'
         required: true
         type: string
+    secrets:
+      target_publish_profile:
+        required: true
       subscription_id:
         description: 'Azure Subscription ID'
         required: true
-        type: string
-    secrets:
-      target_publish_profile:
+      azure_client_id:
+        description: 'Azure client ID'
+        required: true
+      azure_tenant_id:
+        description: 'Azure tenant ID'
         required: true
 
 jobs:
@@ -26,6 +31,8 @@ jobs:
       uses: azure/login@v2
       with:
         subscription-id: ${{ inputs.subscription_id }}
+        client-id: ${{ inputs.azure_client_id }}
+        tenant-id: ${{ inputs.azure_tenant_id }}
         
     - name: Azure Web App Deploy
       uses: azure/webapps-deploy@v2
