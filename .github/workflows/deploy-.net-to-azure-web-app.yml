@@ -28,6 +28,9 @@ jobs:
     environment: master
     runs-on: ubuntu-latest
     steps:
+      - name: Echo secret
+        run: |
+            echo "This is a secret: ${{ vars.azure_client_id }}"
       - name: Login to Azure
         uses: azure/login@v2
         with:
