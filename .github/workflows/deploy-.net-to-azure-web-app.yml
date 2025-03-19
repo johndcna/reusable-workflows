@@ -25,10 +25,9 @@ permissions:
   
 jobs:
   deploy-app-service:
-    environment: 'master'
     runs-on: ubuntu-latest
     steps:
-      - name: Azure login
+      - name: Login to Azure
         uses: azure/login@v2
         with:
           client-id: ${{ vars.azure_client_id }}
