@@ -43,11 +43,9 @@ jobs:
     - name: Azure Login
       uses: azure/login@v2
       with:
-        auth-type: IDENTITY
         subscription-id: '6c8cd46b-6887-4cba-8596-a38ceeabd610'
         client-id: '921afbfe-b2c3-4d0b-b2eb-ec131101e2d1'
         tenant-id: 'f4acf4b0-d8ce-47de-9567-63bdeee62d4e'
-        enable-AzPSSession: true
         
     - name: Azure Web App Deploy
       uses: azure/webapps-deploy@v2
