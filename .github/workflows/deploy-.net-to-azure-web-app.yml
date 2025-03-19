@@ -30,36 +30,23 @@ jobs:
   deploy-app-service:
     runs-on: ubuntu-latest
     steps:
-    - name: Print secret
-      run: |
-        echo "The secret is successfully subscription_id"
-        echo "The value of the secret is: ${{ secrets.subscription-id }}"
-    - name: Print secret
-      run: |
-        echo "The secret is successfully azure_client_id"
-        echo "The value of the secret is: ${{ secrets.azure_client_id }}"
-    - name: Print secret
-      run: |
-        echo "The secret is successfully azure_tenant_id"
-        echo "The value of the secret is: ${{ secrets.azure_tenant_id }}"
-    
-    - name: Azure Login
-      uses: azure/login@a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0
-      with:        
-        client-id: ${{ secrets.azure_client_id }}
-        tenant-id: ${{ secrets.azure_tenant_id }}
-        subscription-id: ${{ secrets.subscription-id }}
+      - name: Azure login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Azure CLI script
+        uses: azure/cli@v2
+        with:
+          azcliversion: latest
+          inlineScript: |
+            az account show
         
-    - name: Azure CLI script
-      uses: azure/cli@v2
-      with:
-        azcliversion: latest
-        inlineScript: |
-          az account show
-        
-    - name: Azure Web App Deploy
-      uses: azure/webapps-deploy@v2
-      with:
-        # Name of the App Service
-        app-name: ${{ inputs.APP_NAME }}
-        publish-profile: ${{ secrets.target_publish_profile }}
+      - name: Azure Web App Deploy
+        uses: azure/webapps-deploy@v2
+        with:
+          # Name of the App Service
+          app-name: ${{ inputs.APP_NAME }}
+          publish-profile: ${{ secrets.target_publish_profile }}
