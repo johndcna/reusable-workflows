@@ -13,16 +13,21 @@ on:
         type: string
 
 jobs:
-
   test-run-print:
     runs-on: ubuntu-latest
     steps:
-    - name: Echo secret
+    - name: Echo fname
       run: |
-            echo "This is a secret: ${{ inputs.fname }}"
+            echo "This is a fname value: ${{ inputs.fname }}"
+    - name: Generate APP_NAME
+      run: |
+        ls -alFh
+        VARS_JSON='${{ toJson(vars) }}'
+        APP_NAME=$(echo "$VARS_JSON" | jq -r ".${{ inputs.fname }}")
+        echo "::notice::APP_NAME=$APP_NAME"
+        echo "APP_NAME=$APP_NAME" >> $GITHUB_ENV
 
       # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
+    - name: echo fname again
       run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+            echo "This is a fname value: ${{ env.APP_NAME }}"
