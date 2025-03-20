@@ -47,6 +47,7 @@ jobs:
       - name: Azure Web App Deploy
         uses: azure/webapps-deploy@v2
         with:
+          environment: 'master'
           app-name: 'Cena'
           publish-profile: ${{ inputs.target_publish_profile }}
 
