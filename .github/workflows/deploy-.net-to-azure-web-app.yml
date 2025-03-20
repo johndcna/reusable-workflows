@@ -47,8 +47,6 @@ jobs:
       - name: Azure Web App Deploy
         uses: azure/webapps-deploy@v2
         with:
-          environment: 'master'
           app-name: 'Cenamon'
-          slot-name: 'development'
           publish-profile: ${{ inputs.target_publish_profile }}
 
