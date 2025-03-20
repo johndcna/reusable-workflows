@@ -23,9 +23,9 @@ jobs:
       run: |
         ls -alFh
         VARS_JSON='${{ toJson(vars) }}'
-        APP_NAME=$(echo "$VARS_JSON" | jq -r ".${{ inputs.fname }}")
-        echo "::notice::APP_NAME=$APP_NAME"
-        echo "APP_NAME=$APP_NAME" >> $GITHUB_ENV
+        AZURE_WEBAPP_NAME=$(echo "$VARS_JSON" | jq -r ".${{ inputs.fname }}")
+        echo "::notice::AZURE_WEBAPP_NAME=$AZURE_WEBAPP_NAME"
+        echo "AZURE_WEBAPP_NAME=$AZURE_WEBAPP_NAME" >> $GITHUB_ENV
 
       # Runs a set of commands using the runners shell
     - name: echo fname again
