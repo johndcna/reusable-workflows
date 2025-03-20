@@ -10,9 +10,10 @@ on:
         description: 'Set the target App Name'
         required: true
         type: string 
-    secrets:
       target_publish_profile:
         required: true
+        type: string 
+    secrets:
       subscription_id:
         required: true
       azure_client_id:
