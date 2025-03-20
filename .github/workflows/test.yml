@@ -1,33 +1,15 @@
-name: Test Print Param
-
+name: Worflow with input
 on:
   workflow_call:
     inputs:
-      fname:
-        description: 'Set the artifact first name'
-        required: true
-        type: string
-      path:
-        description: 'Set the artifact path name'
+      my-arg:
         required: true
         type: string
 
 jobs:
-  test-run-print:
+  print_input:
     runs-on: ubuntu-latest
     steps:
-    - name: Echo fname
-      run: |
-            echo "This is a fname value: ${{ inputs.fname }}"
-    - name: Generate APP_NAME
-      run: |
-        ls -alFh
-        VARS_JSON='${{ toJson(vars) }}'
-        AZURE_WEBAPP_NAME=$(echo "$VARS_JSON" | jq -r ".${{ inputs.fname }}")
-        echo "::notice::AZURE_WEBAPP_NAME=$AZURE_WEBAPP_NAME"
-        echo "AZURE_WEBAPP_NAME=$AZURE_WEBAPP_NAME" >> $GITHUB_ENV
-
-      # Runs a set of commands using the runners shell
-    - name: echo fname again
-      run: |
-            echo "This is a fname value: ${{ env.APP_NAME }}"
+      - uses: actions/checkout@v4
+      - name: display my arg
+        run: echo ${{ inputs.my-arg }}
