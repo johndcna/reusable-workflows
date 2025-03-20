@@ -49,7 +49,7 @@ jobs:
         with:
           app-name: 'Cena'
           resource-group-name: 'rg-john-free'
-          slot-name: ${{ secrets.target_publish_profile }}
+          slot-name: ${{ inputs.target_app_name }}
           package: ''
           publish-profile: ${{ inputs.target_publish_profile }}
 
