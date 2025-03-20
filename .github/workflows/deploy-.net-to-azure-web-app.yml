@@ -30,7 +30,7 @@ jobs:
     steps:
       - name: Echo secret
         run: |
-            echo "This is a secret: ${{ vars.azure_client_id }}"
+            echo "This is a secret: ${{ inputs.target_app_name }}"
       - name: Login to Azure
         uses: azure/login@v2
         with:
