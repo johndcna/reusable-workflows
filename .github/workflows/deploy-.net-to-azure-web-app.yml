@@ -49,5 +49,6 @@ jobs:
         with:
           environment: 'master'
           app-name: 'Cenamon'
+          slot-name: 'development'
           publish-profile: ${{ inputs.target_publish_profile }}
 
