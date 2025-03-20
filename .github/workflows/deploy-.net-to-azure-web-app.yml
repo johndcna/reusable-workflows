@@ -48,5 +48,5 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           # Name of the App Service
-          app-name: ${{ inputs.APP_NAME }}
+          app-name: ${{ inputs.target_app_name }}
           publish-profile: ${{ vars.target_publish_profile }}
