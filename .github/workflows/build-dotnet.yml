@@ -44,6 +44,9 @@ jobs:
     - name: .NET Test
       run: dotnet test --no-build --verbosity normal
 
+    - name: .NET Publish
+      run: dotnet publish -c Release -o '${{ inputs.path }}'
+
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
