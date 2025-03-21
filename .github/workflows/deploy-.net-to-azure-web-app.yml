@@ -28,29 +28,19 @@ jobs:
   deploy-app-service:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo secret
-        run: |
-            echo "This is a secret: ${{ inputs.target_app_name }}"
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: '921afbfe-b2c3-4d0b-b2eb-ec131101e2d1'
-          tenant-id: 'f4acf4b0-d8ce-47de-9567-63bdeee62d4e'
-          subscription-id: '6c8cd46b-6887-4cba-8596-a38ceeabd610'
+          client-id: ${{ secrets.CLIENT_ID }}
+          tenant-id: ${{ secrets.TENANT_ID }}
+          subscription-id: ${{ secrets.SUBSCRIPTION_ID }}
 
-      - name: Azure CLI script
-        uses: azure/cli@v2
-        with:
-          azcliversion: latest
-          inlineScript: |
-            az account show
-        
       - name: Azure Web App Deploy
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'Cena'
           resource-group-name: 'rg-john-free'
-          slot-name: ${{ inputs.target_app_name }}
+          slot-name: ''
           package: ''
           publish-profile: ${{ inputs.target_publish_profile }}
 
