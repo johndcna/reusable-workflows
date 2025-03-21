@@ -2,14 +2,18 @@ name: Worflow with input
 on:
   workflow_call:
     inputs:
-      my-arg:
+      config-path:
         required: true
         type: string
+    secrets:
+      personal_access_token:
+        required: true
 
 jobs:
-  print_input:
+  reusable_workflow_job:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: display my arg
-        run: echo ${{ inputs.my-arg }}
+    - uses: actions/labeler@v4
+      with:
+        repo-token: ${{ secrets.personal_access_token }}
+        configuration-path: ${{ inputs.config-path }}
