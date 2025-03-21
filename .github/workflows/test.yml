@@ -15,5 +15,5 @@ jobs:
     steps:
     - uses: actions/labeler@v4
       with:
-        repo-token: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        repo-token: ${{ secrets.SEC }}
         configuration-path: ${{ inputs.config-path }}
