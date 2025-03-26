@@ -39,7 +39,7 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'Cenamon'
-          package: '/ding'
+          package: './ding'
           resource-group-name: 'rg-john-free'
           publish-profile: ${{ inputs.target_publish_profile }}
 
