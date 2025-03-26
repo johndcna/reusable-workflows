@@ -45,13 +45,13 @@ jobs:
       run: dotnet test --no-build --verbosity normal
 
     - name: .NET Publish
-      run: dotnet publish -c Release -o '/ding'
+      run: dotnet publish -c Release -o './ding'
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v4
       with:
         name: ${{ inputs.artifact_name }}
-        path: '/ding'
+        path: './ding'
 
 
 
