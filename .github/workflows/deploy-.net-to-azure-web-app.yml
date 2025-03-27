@@ -44,5 +44,5 @@ jobs:
         with:
           app-name: 'Cena'
           package: './ding'
-          publish-profile: 'hey'
+          publish-profile: ''
 
