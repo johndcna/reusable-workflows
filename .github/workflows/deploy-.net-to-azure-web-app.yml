@@ -44,5 +44,5 @@ jobs:
         with:
           app-name: 'Cena'
           package: './ding'
-          publish-profile: ${{ inputs.target_publish_profile }}
+          publish-profile: 'hey'
 
