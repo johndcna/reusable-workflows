@@ -43,6 +43,5 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: ${{ vars.APP_NAME }}
-          package: './ding'
           publish-profile: ${{ inputs.target_publish_profile }}
 
